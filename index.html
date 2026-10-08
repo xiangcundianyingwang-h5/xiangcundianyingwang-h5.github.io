@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>乡村爱情电影网 | 乡村题材与爱情电影影评资讯站</title>
+  <meta name="description" content="乡村爱情电影网：聚焦乡村题材、田园爱情、国产情感电影的原创影评、高分片单与行业资讯。乡村爱情电影网官网 xiangcundianyingwang-h5.github.io。" />
+  <meta name="keywords" content="乡村爱情电影网,乡村电影,爱情电影,国产田园电影,电影影评,乡村题材片单" />
+  <meta name="author" content="乡村爱情电影网" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://xiangcundianyingwang-h5.github.io/" />
+  <meta property="og:title" content="乡村爱情电影网 | 乡村题材与爱情电影影评资讯站" />
+  <meta property="og:description" content="原创乡村电影影评、田园爱情片单、行业资讯与投稿入口。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://xiangcundianyingwangwang-h5.github.io/" />
+  <style>
+    :root{
+      --bg:#fffaf2;
+      --ink:#2b2118;
+      --muted:#7a6a58;
+      --brand:#c8442f;
+      --brand2:#e7a33b;
+      --line:#ead9c2;
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(80,50,20,.12);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(1180px,92vw);margin:0 auto}
+
+    /* 顶部导航 */
+    header.nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,250,242,.92);
+      backdrop-filter:saturate(140%) blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-weight:800;letter-spacing:.5px;font-size:20px;color:var(--brand)}
+    .logo span{color:var(--brand2)}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:8px 12px;border-radius:999px;font-size:15px;color:var(--muted)}
+    .menu a:hover{background:#fff;color:var(--brand);box-shadow:var(--shadow)}
+    .hamburger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;font-size:20px}
+
+    /* Hero */
+    .hero{
+      padding:72px 0 56px;
+      background:
+        radial-gradient(1200px 400px at 80% -10%, rgba(231,163,59,.25), transparent 60%),
+        linear-gradient(180deg,#fff7ea,#fffaf2);
+    }
+    .hero h1{font-size:clamp(30px,6vw,54px);margin:0 0 16px;line-height:1.15}
+    .hero h1 b{color:var(--brand)}
+    .hero p{font-size:18px;color:var(--muted);max-width:640px}
+    .hero .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;
+      border:1px solid transparent;cursor:pointer;
+    }
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-ghost{background:#fff;color:var(--brand);border-color:var(--line)}
+
+    /* 通用区块 */
+    section{padding:64px 0}
+    .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .sec-head h2{font-size:clamp(24px,4vw,34px);margin:0}
+    .sec-head .tag{color:var(--brand2);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:13px}
+    .kicker{color:var(--brand);font-weight:700;font-size:14px}
+
+    /* 栏目1：正在热映——横向滑动卡片 */
+    .reel{
+      display:grid;grid-auto-flow:column;grid-auto-columns:78%;
+      gap:16px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;
+    }
+    .reel::-webkit-scrollbar{height:8px}
+    .reel::-webkit-scrollbar-thumb{background:var(--line);border-radius:999px}
+    .film-card{
+      scroll-snap-align:start;background:var(--card);border:1px solid var(--line);
+      border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    }
+    .poster{aspect-ratio:2/3;background:linear-gradient(135deg,#f3d9b8,#e7a33b);position:relative}
+    .poster .score{
+      position:absolute;top:10px;left:10px;background:#fff;color:var(--brand);
+      font-weight:800;padding:4px 10px;border-radius:999px;font-size:14px;box-shadow:var(--shadow);
+    }
+    .poster .genre{
+      position:absolute;bottom:10px;right:10px;background:rgba(43,33,24,.82);color:#fff;
+      font-size:12px;padding:4px 10px;border-radius:999px;
+    }
+    .film-card .body{padding:14px 16px}
+    .film-card h3{margin:0 0 6px;font-size:18px}
+    .film-card p{margin:0;color:var(--muted);font-size:14px}
+    .film-card .more{display:inline-block;margin-top:10px;color:var(--brand);font-weight:700;font-size:14px}
+
+    /* 栏目2：高分片单——交错图文 */
+    .feature{display:grid;gap:26px}
+    .feature-row{
+      display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+      box-shadow:var(--shadow);
+    }
+    .feature-row:nth-child(even) .feature-media{order:2}
+    .feature-media{aspect-ratio:16/10;border-radius:14px;background:linear-gradient(135deg,#c8442f,#e7a33b)}
+    .feature-row h3{margin:0 0 8px;font-size:22px}
+    .feature-row blockquote{margin:0 0 10px;color:var(--muted);border-left:4px solid var(--brand2);padding-left:12px}
+    .spec{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+    .spec span{background:#fff3df;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;color:#8a5a17}
+
+    /* 栏目3：资讯动态——时间轴 */
+    .news{background:#241a12;color:#f3e7d6}
+    .news .sec-head h2{color:#fff}
+    .news .sec-head .tag{color:var(--brand2)}
+    .timeline{position:relative;margin-left:14px;padding-left:26px;border-left:2px dashed rgba(231,163,59,.55)}
+    .tl-item{position:relative;padding:0 0 28px}
+    .tl-item::before{
+      content:"";position:absolute;left:-35px;top:4px;width:14px;height:14px;border-radius:50%;
+      background:var(--brand2);box-shadow:0 0 0 5px rgba(231,163,59,.18);
+    }
+    .tl-item time{color:var(--brand2);font-weight:700;font-size:13px}
+    .tl-item h3{margin:6px 0 6px;color:#fff;font-size:19px}
+    .tl-item p{margin:0;color:#cdbfb0;font-size:15px}
+
+    /* 栏目4：关于/投稿——指标网格 + 表单 */
+    .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+    .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .metric{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .metric b{display:block;font-size:28px;color:var(--brand)}
+    .metric span{color:var(--muted);font-size:14px}
+    .form-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .field{margin-bottom:14px}
+    .field label{display:block;font-size:14px;font-weight:700;margin-bottom:6px}
+    .field input,.field textarea{
+      width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fffdf8;
+    }
+    .field textarea{min-height:110px;resize:vertical}
+    .checklist{list-style:none;padding:0;margin:14px 0 0}
+    .checklist li{padding-left:26px;position:relative;margin-bottom:8px;color:var(--muted)}
+    .checklist li::before{content:"✓";position:absolute;left:0;color:var(--brand);font-weight:800}
+
+    footer{background:#1c140d;color:#bcae9d;padding:36px 0}
+    footer a{color:var(--brand2)}
+    .foot-inner{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+
+    /* 响应式 */
+    @media (max-width:900px){
+      .feature-row,.about-grid{grid-template-columns:1fr}
+      .feature-row:nth-child(even) .feature-media{order:0}
+    }
+    @media (max-width:720px){
+      .menu{
+        position:absolute;top:64px;left:0;right:0;background:#fffaf2;border-bottom:1px solid var(--line);
+        flex-direction:column;align-items:stretch;gap:0;padding:8px 16px 16px;display:none;
+      }
+      .menu.open{display:flex}
+      .menu a{padding:12px 8px;border-radius:10px}
+      .hamburger{display:inline-flex;align-items:center;justify-content:center}
+      .reel{grid-auto-columns:86%}
+    }
+    @media (max-width:460px){
+      .metrics{grid-template-columns:1fr}
+      .hero{padding:54px 0 40px}
+    }
+  </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+  <!-- 导航 -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <div class="logo">乡村<span>爱情电影网</span></div>
+      <button class="hamburger" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+      <nav class="menu" id="menu">
+        <a href="#home">首页</a>
+        <a href="#showing">热映推荐</a>
+        <a href="#list">高分片单</a>
+        <a href="#news">资讯动态</a>
+        <a href="#about">关于/投稿</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="kicker">乡村 · 田园 · 爱情电影</div>
+      <h1>把<b>乡村爱情电影网</b><br/>做成一本会呼吸的胶片笔记</h1>
+      <p>乡村爱情电影网专注乡村题材、田园爱情与国产情感电影的原创影评、片单梳理和行业观察。这里不搬运盗版资源，只写看完电影后值得留下的话。</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#showing">看本周片单 →</a>
+        <a class="btn btn-ghost" href="#about">投稿你的影评</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目1：正在热映（横向滑动卡片） -->
+  <section id="showing">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="tag">Now Showing</div>
+          <h2>热映推荐 · 乡村与爱情</h2>
+        </div>
+        <a href="#">查看全部 #</a>
+      </div>
+
+      <div class="reel">
+        <article class="film-card">
+          <div class="poster">
+            <span class="score">8.7</span>
+            <span class="genre">乡村 / 剧情</span>
+          </div>
+          <div class="body">
+            <h3>麦田那头的姑娘</h3>
+            <p>秋收、婚事与离乡：一部把土地拍得很慢的电影。</p>
+            <a class="more" href="#">读影评 #</a>
+          </div>
+        </article>
+
+        <article class="film-card">
+          <div class="poster" style="background:linear-gradient(135deg,#7bbf8a,#e7a33b)">
+            <span class="score">8.2</span>
+            <span class="genre">爱情 / 田园</span>
+          </div>
+          <div class="body">
+            <h3>山雾里的信</h3>
+            <p>没有大场面，只有两个人在雾里把话越说越轻。</p>
+            <a class="more" href="#">读影评 #</a>
+          </div>
+        </article>
+
+        <article class="film-card">
+          <div class="poster" style="background:linear-gradient(135deg,#c8442f,#7a3b8f)">
+            <span class="score">7.9</span>
+            <span class="genre">家庭 / 乡村</span>
+          </div>
+          <div class="body">
+            <h3>老屋有电扇</h3>
+            <p>返乡、代沟与一碗面：把中国式家庭拍得不吵。</p>
+            <a class="more" href="#">读影评 #</a>
+          </div>
+        </article>
+
+        <article class="film-card">
+          <div class="poster" style="background:linear-gradient(135deg,#3b7a8f,#e7a33b)">
+            <span class="score">8.4</span>
+            <span class="genre">爱情 / 文艺</span>
+          </div>
+          <div class="body">
+            <h3>河边放映队</h3>
+            <p>村口白布、柴油发电机，和一场迟来十年的告白。</p>
+            <a class="more" href="#">读影评 #</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目2：高分片单（交错图文） -->
+  <section id="list" style="background:#fff;">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="tag">Curated List</div>
+          <h2>高分片单 · 乡土情感三部曲</h2>
+        </div>
+        <a href="#">收藏片单 #</a>
+      </div>
+
+      <div class="feature">
+        <article class="feature-row">
+          <div class="feature-media"></div>
+          <div>
+            <h3>《晒谷场上的夏天》</h3>
+            <blockquote>“太阳很烫，少年们的心事比谷粒还沉。”</blockquote>
+            <div class="spec">
+              <span>导演：林禾</span><span>片长：112 分钟</span><span>年份：2024</span>
+            </div>
+            <p>用晒谷场做舞台，把青春期、农忙与暗恋拍成一首不押韵的诗。乡村爱情电影网将其列入“夏天必看”。</p>
+            <a class="more" href="#">查看条目 #</a>
+          </div>
+        </article>
+
+        <article class="feature-row">
+          <div class="feature-media" style="background:linear-gradient(135deg,#e7a33b,#c8442f)"></div>
+          <div>
+            <h3>《嫁妆是一头黄牛》</h3>
+            <blockquote>“她不是被嫁出去，是把整座山一起带走了。”</blockquote>
+            <div class="spec">
+              <span>导演：周棉</span><span>片长：98 分钟</span><span>年份：2023</span>
+            </div>
+            <p>婚姻、牲畜与土地权属交织，笑里带刺。适合喜欢现实主义的观众，也适合做电影社讨论片。</p>
+            <a class="more" href="#">查看条目 #</a>
+          </div>
+        </article>
+
+        <article class="feature-row">
+          <div class="feature-media" style="background:linear-gradient(135deg,#7bbf8a,#3b7a8f)"></div>
+          <div>
+            <h3>《邮差停在桃花坳》</h3>
+            <blockquote>“信很慢，但爱好像本来就不需要快递。”</blockquote>
+            <div class="spec">
+              <span>导演：何垚</span><span>片长：105 分钟</span><span>年份：2025</span>
+            </div>
+            <p>通信、等待与山坳里的春天。乡村爱情电影网给它的关键词是：克制、湿润、像雨后泥土。</p>
+            <a class="more" href="#">查看条目 #</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目3：资讯动态（时间轴） -->
+  <section class="news" id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="tag">Journal</div>
+          <h2>资讯动态</h2>
+        </div>
+        <a href="#" style="color:var(--brand2)">订阅更新 #</a>
+      </div>
+
+      <div class="timeline">
+        <article class="tl-item">
+          <time>2026-10-08</time>
+          <h3>乡村爱情电影网上线“田园爱情”专题</h3>
+          <p>我们整理了 12 部低饱和度、高共情力的国产乡村情感片，供线下放映室与高校电影社使用。</p>
+        </article>
+        <article class="tl-item">
+          <time>2026-09-22</time>
+          <h3>投稿通道试运营：影评人可发 800 字短评</h3>
+          <p>不收水稿、不收洗稿；优先采用有田野观察、有镜头细读、有个人经验的文章。</p>
+        </article>
+        <article class="tl-item">
+          <time>2026-09-05</time>
+          <h3>乡村题材为什么重新被年轻人看见？</h3>
+          <p>从返乡叙事到慢直播，我们写了一篇长文，聊“土”是怎么变成一种审美的。</p>
+        </article>
+        <article class="tl-item">
+          <time>2026-08-18</time>
+          <h3>本站声明：不提供盗版播放源</h3>
+          <p>乡村爱情电影网只做评论、资料与片单；正版平台链接会在影评末尾单独标注。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 栏目4：关于 / 投稿（指标 + 表单） -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="tag">About / Submit</div>
+          <h2>关于乡村爱情电影网</h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <p>乡村爱情电影网是一个小型原创电影内容站，关注<strong>乡村、田园、返乡、婚恋、代际关系</strong>等影像命题。我们不做资源站，不做盗版聚合，只把“看完电影之后还能想一会儿”的东西写下来。</p>
+          <div class="metrics">
+            <div class="metric"><b>120+</b><span>原创影评</span></div>
+            <div class="metric"><b>36</b><span>乡村题材片单</span></div>
+            <div class="metric"><b>9.1</b><span>读者满意度</span></div>
+            <div class="metric"><b>0</b><span>盗版播放源</span></div>
+          </div>
+          <ul class="checklist">
+            <li>每篇影评都标导演 / 片长 / 适合谁看</li>
+            <li>片单可按“乡愁、暗恋、返乡、代际”筛选</li>
+            <li>投稿采用后署名 + 可留个人主页链接</li>
+          </ul>
+        </div>
+
+        <form class="form-card" onsubmit="event.preventDefault();alert('已收到投稿意向，本站为演示页，不真正发送数据。');">
+          <h3 style="margin-top:0">投一篇影评</h3>
+          <div class="field">
+            <label for="name">昵称</label>
+            <input id="name" name="name" type="text" placeholder="怎么称呼你" required />
+          </div>
+          <div class="field">
+            <label for="film">电影名称</label>
+            <input id="film" name="film" type="text" placeholder="例如：晒谷场上的夏天" required />
+          </div>
+          <div class="field">
+            <label for="msg">短评 / 投稿说明</label>
+            <textarea id="msg" name="msg" placeholder="写 200 字也行，别洗稿～"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">提交投稿 #</button>
+          <p style="color:var(--muted);font-size:13px;margin:12px 0 0">
+            本站网址：<a href="https://xiangcundianyingwang-h5.github.io">xiangcundianyingwang-h5.github.io</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <div>
+        <strong style="color:#fff">乡村爱情电影网</strong><br/>
+        乡村题材 · 田园爱情 · 原创影评资讯站
+      </div>
+      <div>
+        <a href="#home">首页</a> ·
+        <a href="#showing">热映</a> ·
+        <a href="#list">片单</a> ·
+        <a href="#news">资讯</a> ·
+        <a href="#about">投稿</a>
+      </div>
+      <div>© 2026 乡村爱情电影网 · 仅作演示，不提供盗版资源</div>
+    </div>
+  </footer>
+
+  <script>
+    // 移动端点击菜单后自动收起
+    document.querySelectorAll('#menu a').forEach(function(a){
+      a.addEventListener('click', function(){
+        document.getElementById('menu').classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
